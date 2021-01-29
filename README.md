@@ -1,6 +1,6 @@
 ## gitsync-container-volume
 
-A simple, lightweight (<15mb), from-scratch container written in pure go to keep a directory up-to-date with a remote git repository.
+A simple container written in pure go to keep a directory up-to-date with a remote git repository.
 
 Does the equivalent of a `git clone`, followed by repeated `git pull` at a specified interval into the directory `/data` using the [go-git](https://github.com/go-git/go-git) project.
 

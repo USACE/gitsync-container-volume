@@ -19,15 +19,15 @@ RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 \
 
 RUN mkdir /data && chown data:data /data && chmod 755 /data
 
+#
 # FROM scratch
-
 # COPY --from=builder /go/bin/gitsync /go/bin/gitsync
 # COPY --from=builder /etc/passwd /etc/passwd
 # COPY --from=builder /data /data
 # COPY --from=builder /etc/ssl/certs/ca-certificates.crt \
 #                     /etc/ssl/certs/ca-certificates.crt
 
-# VOLUME "/data"
+VOLUME "/data"
 
 # https://medium.com/@lizrice/non-privileged-containers-based-on-the-scratch-image-a80105d6d341
 USER data
