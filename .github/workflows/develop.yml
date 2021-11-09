@@ -1,15 +1,14 @@
-name: Build Container
+name: Build Develop
 
 on:
   push:
     branches: [develop]
     paths:
-      - 'Dockerfile'
-      - '.github/workflows/container.yml'
-      - 'gitsync/**'
+      - "Dockerfile"
+      - ".github/workflows/container.yml"
+      - "gitsync/**"
 
 jobs:
-
   DockerImage:
     name: Container Image
     # The type of runner that the job will run on
@@ -17,16 +16,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-    
+
       - name: Configure AWS credentials
         if: ${{ always() }}
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.CASTLECI_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.CASTLECI_AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.CASTLECI_AWS_REGION }}
+          aws-access-key-id: ${{ secrets.CASTLECI_DEVELOP_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.CASTLECI_DEVELOP_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.CASTLECI_DEVELOP_AWS_REGION }}
 
       - name: Login to Amazon ECR
         if: ${{ success() }}

@@ -5,6 +5,7 @@ build:
 
 run:
 	docker run -v $(shell pwd)/data:/data \
-    -e REPOSITORY_URL="https://github.com/USACE/gitsync-container-volume" \
+    -e REPOSITORY_URL="https://github.com/USACE/airflow-config" \
     -e REMOTE_BRANCH="develop" \
+    -e PULL_INTERVAL="10s" \
 	gitsync-container-volume:latest
